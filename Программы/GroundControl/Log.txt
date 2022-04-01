@@ -1,0 +1,97 @@
+
+
+-------------=============-------------
+16:31:13 - Hello
+16:31:13 - FTP start
+
+
+-------------=============-------------
+16:40:04 - Hello
+16:40:11 - FTP start
+16:40:33 - Globe go home!
+16:41:04 - Started globe
+16:41:22 - Stopping globe
+16:41:25 - Started globe
+16:42:03 - Stopping globe
+16:42:07 - Started globe
+16:42:12 - Stopping globe
+16:42:15 - Started globe
+16:43:09 - Stopping globe
+16:43:32 - Globe go home!
+16:46:31 - FTP killed
+
+
+
+-------------=============-------------
+13:22:19 - Hello
+13:22:24 - FTP start
+13:24:24 - Globe go home!
+13:26:30 - Started globe
+13:32:16 - Stopping globe
+13:32:23 - FTP killed
+
+
+
+-------------=============-------------
+13:32:59 - Hello
+13:33:00 - FTP start
+13:33:12 - Globe go home!
+13:33:17 - Globe go home!
+13:34:28 - Started globe
+13:44:19 - Stopping globe
+13:44:22 - Globe go home!
+15:43:36 - Started globe
+16:00:32 - Stopping globe
+16:07:34 - Started globe
+16:08:14 - Stopping globe
+16:08:31 - Started globe
+16:08:40 - Stopping globe
+16:08:40 - Started globe
+16:08:41 - Stopping globe
+16:09:44 - Started globe
+16:14:31 - Stopping globe
+16:25:39 - FTP killed
+
+
+
+-------------=============-------------
+16:29:21 - Hello
+16:29:22 - FTP start
+16:38:31 - FTP killed
+
+
+
+-------------=============-------------
+16:39:06 - Hello
+16:39:06 - FTP start
+16:39:23 - FTP killed
+
+
+
+-------------=============-------------
+18:30:01 - Hello
+18:30:05 - FTP start
+18:34:32 - FTP killed
+
+
+
+-------------=============-------------
+15:01:27 - Hello
+15:01:53 - FTP start
+15:18:09 - Started globe
+15:29:47 - Stopping globe
+15:55:17 - Started globe
+15:55:53 - Stopping globe
+16:19:08 - Started globe
+16:20:07 - Stopping globe
+16:34:28 - Started globe
+16:36:53 - Stopping globe
+16:44:42 - FTP killed
+
+
+
+-------------=============-------------
+10:11:49 - Hello
+10:11:50 - FTP start
+14:28:37 - FTP killed
+
