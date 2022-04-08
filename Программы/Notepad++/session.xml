@@ -1,8 +1,7 @@
 <NotepadPlus>
     <Session activeView="0">
         <mainView activeIndex="0">
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="640" startPos="16" endPos="16" selMode="0" lang="Python" encoding="-1" filename="D:\1General_folder\Sputnix\Orbicraft\!Tests\Python\Mistake_test\Hello_Alexpy_mistake_test_2.py" backupFilePath="" originalFileLastModifTimestamp="1502468691" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="640" startPos="306" endPos="306" selMode="0" lang="Python" encoding="-1" filename="D:\1General_folder\Sputnix\Orbicraft\!Tests\Python\Mistake_test\Hello_Alexpy_mistake_test_3.py" backupFilePath="" originalFileLastModifTimestamp="1502468922" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1192" startPos="1161" endPos="1161" selMode="0" lang="C" encoding="-1" filename="C:\Users\jsr\Documents\GitHub\worldskills\Project_c_test\test.c" backupFilePath="" originalFileLastModifTimestamp="1649425435" />
         </mainView>
         <subView activeIndex="0" />
     </Session>
