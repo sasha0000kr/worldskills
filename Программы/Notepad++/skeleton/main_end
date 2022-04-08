@@ -1,0 +1,146 @@
+
+
+def _control():
+    global _A
+    accumulator_attach(_A)
+    try:
+        control()
+    except KeyboardInterrupt:
+        Exit()
+    accumulator_detach()
+    print "Finish mission"
+    Exit()
+
+
+def _battery():
+    global _A
+    accumulator_attach(_A)
+    try:
+        accumulator()
+    except KeyboardInterrupt:
+        Exit()
+    accumulator_detach()
+    print 'Die! Accumulator has been discharged!'
+    Exit()
+
+
+def Exit():
+    global _P
+    for p in _P:
+        try: p.terminate()
+        except: pass
+
+
+def usage(prg):
+    print "Usage: %s [options] <tty>" % prg;
+    print "  (use CTRL-C to terminate program)"
+    print ""
+    print "Options:"
+    print "  -N <value>\t\t(number of cells in battery, default is %d)" % cvar.ncells
+    print "  -X \t\t\t(do not poll sun battery for charging)"
+    print "  -b <value>\t\t(set baudrate, default is %d)" % cvar.G.baud
+    print "  -c <value>\t\t(charge of accumulator, default is %.1fAH)" % cvar.G.charge
+    print "  -d\t\t\t(increment level for debug messages)"
+    print "  -f <value>\t\t(FTP, default is %s)" % cvar.ftp_path
+    print "  -i <value>\t\t(discharge current, default is %.1fmA)" % cvar.G.current
+    print "  -n <value>\t\t(number of retries, default is %d)" % cvar.G.retries
+    print "  -t <value>\t\t(set i/o timeout, default is %dmS)" % cvar.G.timeout
+    print "  -v\t\t\t(show build information and exit)"
+    print "  -z <value>\t\t(buzz server, default is %s)" % cvar.G.buzz_server
+    print ""
+
+    sys.exit(1)
+
+
+def main():
+    import getopt
+
+    global _A
+    global _P
+
+    # websocketd needs this
+    sys.stderr = sys.stdout
+
+    prg = sys.argv[0]
+
+    if not cvar.G.buzz_server:
+        cvar.G.buzz_server = '192.168.42.42'
+
+    if not cvar.ftp_path:
+        cvar.ftp_path = 'ftp://192.168.42.42/incoming'
+
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "hN:Xb:c:df:i:n:t:z:v")
+    except getopt.GetoptError as err:
+        print str(err)
+        usage(sys.argv[0])
+
+    for o, a in opts:
+        if o == "-h":
+            usage(prg)
+        elif o == "-N":
+            cvar.ncells = int(a)
+        elif o == "-X":
+            cvar.donotpollsunbattery = 1
+        elif o == "-b":
+            cvar.G.baud = int(a)
+        elif o == "-c":
+            cvar.G.charge = float(a)
+        elif o == "-d":
+            cvar.debug += 1
+        elif o == "-f":
+            cvar.ftp_path = a
+        elif o == "-i":
+            cvar.G.current = float(a)
+        elif o == "-n":
+            cvar.G.retries = int(a)
+        elif o == "-t":
+            cvar.G.timeout = int(a)
+        elif o == "-v":
+            version(prg)
+            sys.exit(0)
+        elif o == "-z":
+            cvar.G.buzz_server = a
+        else:
+            assert False, "unhandled option"
+
+    if len(args) != 1:
+        usage(prg)
+
+    tty = args[0]
+
+    online(tty)
+
+    version(prg)
+
+    buzz("The %s says 'HELLO' to %s:%d\n" % (prg, cvar.G.buzz_server, cvar.G.buzz_port))
+
+    _A = accumulator_create(prg)
+
+    accumulator_attach(_A)
+    battery_set_charge(cvar.G.charge)
+    battery_set_charge_limit(cvar.G.charge)
+    battery_set_discharging_current(cvar.G.current + cvar.G.fRaspberryConsumption)
+    accumulator_detach()
+
+    p = Process(target=_battery)
+    p.Daemon = 1
+    p.start()
+
+    _P.append(p)
+
+    p = Process(target=_control)
+    p.Daemon = 1
+    p.start()
+
+    _P.append(p)
+
+    for p in _P:
+        p.join()
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        Exit()

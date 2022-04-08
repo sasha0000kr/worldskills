@@ -1,0 +1,16 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+import sys
+
+from schsat import *
+from time import sleep, time
+from multiprocessing import Process
+
+
+# Globals
+_A = -1
+_P = []
+
+LSS_OK  = 0
+LSS_ERROR = 1
+LSS_BREAK = 2
