@@ -1,0 +1,41 @@
+/* This file was automatically generated.  Do not edit! */
+#ifndef LIBSCHSAT_H_
+#define LIBSCHSAT_H_
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <math.h>
+#include <sys/time.h>
+#define LSS_OK 0
+#define LSS_ERROR 1
+void Sleep(int sec);
+void mSleep(int msec);
+void dump_buffer(uint8_t *buf,size_t len);
+int32_t setup_bus(void);
+int32_t sunsensor_request_raw(uint16_t num,uint16_t *pRAW_data);
+int32_t sunsensor_request_reset(uint16_t num);
+int32_t sunsensor_request_maxraw(uint16_t num,uint16_t *pMAXRAW_data);
+int32_t sunsensor_set_minvalue(uint16_t num,uint16_t value);
+int32_t sunsensor_set_calibrate(uint16_t num,uint8_t mode);
+int32_t magnetometer_request_raw(uint16_t num,int16_t *pRAW_dataX,int16_t *pRAW_dataY,int16_t *pRAW_dataZ);
+int32_t magnetometer_request_reset(uint16_t num);
+int32_t hyro_request_raw(uint16_t num,int16_t *pRAW_dataX,int16_t *pRAW_dataY,int16_t *pRAW_dataZ);
+int32_t hyro_request_reset(uint16_t num);
+int32_t motor_set_speed(uint16_t num,int16_t RPM,int16_t *confirm);
+int32_t motor_request_reset(uint16_t num);
+int32_t motor_request_speed(uint16_t num,int16_t *pRPM);
+int32_t transmitter_turn_on(uint16_t num);
+int32_t transmitter_turn_off(uint16_t num);
+int32_t transmitter_request_reset(uint16_t num);
+int32_t receiver_request_state(uint16_t num,float *quality);
+int32_t receiver_request_reset(uint16_t num);
+int32_t transceiver_send(uint16_t tx_num,uint16_t rx_num,const uint8_t *data,uint16_t len);
+int32_t transceiver_request_reset(uint16_t num);
+int32_t transceiver_request_buff(uint16_t num,uint8_t *data);
+int32_t take_photo(uint16_t num);
+int32_t transmit_photo(uint16_t num);
+int32_t sunsensors_angle(uint16_t positive,uint16_t negative,uint16_t ambient,double *angle);
+float get_battery_charge(void);
+float get_battery_discharging_current(void);
+#endif
