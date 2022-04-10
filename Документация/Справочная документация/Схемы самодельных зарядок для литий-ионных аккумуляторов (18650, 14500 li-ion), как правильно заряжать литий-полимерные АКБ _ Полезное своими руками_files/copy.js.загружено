@@ -1,0 +1,10 @@
+document.addEventListener('copy', function(e){
+    
+    e.preventDefault(); // Предотвратили стандартное копирование
+
+    var selection = window.getSelection().toString();
+
+    if(selection.length > 100) selection = selection + " Источник: " + document.location.href;
+
+    e.clipboardData.setData('text/plain', selection);
+});
