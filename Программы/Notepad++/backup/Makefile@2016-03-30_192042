@@ -1,7 +1,0 @@
-CFLAGS = -Wall -I. -fpic -g -O2 -rdynamic
-LDFLAGS = -lm -lschsat -lschsat-dev -ldl
-
-new 2: new 2.c
-
-clean:
-	rm -f new 2
